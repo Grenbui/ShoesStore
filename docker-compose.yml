@@ -1,0 +1,49 @@
+version: '1.0'
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST: db
+      - MYSQL_USER: root
+      - MYSQL_PASSWORD:
+      - MYSQL_DATABASE: pourhomme_management
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE: pourhomme_management
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./app/SQL/MySQL/pourhomme_management.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8081:80"  # Port cho phpMyAdmin
+    environment:
+      PMA_HOST: db  # Kết nối đến service db
+      PMA_USER: root
+      PMA_PASSWORD:
+    depends_on:
+      - db
+    links:
+      - db
+
+volumes:
+  db_data:
