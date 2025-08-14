@@ -7,7 +7,6 @@
 #breadcrump-wrapper{
     background-image: url(../Image/t-shirt.webp);
     height: 300px;
-    margin-bottom: 20px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -37,10 +36,12 @@
     color: #fff;
 }
 
-.page-wrapper {
-    height: 500px;
-    background: rgb(223,157,108);
-    background: linear-gradient(90deg, rgba(223,157,108,1) 0%, rgba(159,113,89,1) 100%);
+#pageContainer {
+    height: max-content;
+    padding: 20px 0;
+    /* background: rgb(223,157,108);
+    background: linear-gradient(90deg, rgba(223,157,108,1) 0%, rgba(159,113,89,1) 100%); */
+    
 }
 
 .login-container{
@@ -49,6 +50,7 @@
     justify-content: center;
     margin: 12px 0;
     height: 500px;
+    
 }
 
 .login-customer {
@@ -57,6 +59,7 @@
     padding: 20px;
     border-radius: 12px;
     background-color: #fff;
+    border-radius: 1px solid #000;
 }
 
 .login-customer h6 {
@@ -67,6 +70,14 @@
 .customer-header {
     margin-bottom: 12px;
     text-transform: uppercase;
+}
+
+.submit__Btn {
+    margin-top: 20px;
+}
+
+.form-group {
+    
 }
 
 .login-customer .optional {
@@ -92,6 +103,8 @@
     padding: 20px;
     border-radius: 12px;
     background-color: #fff;
+    border: 0.02px solid #ccc;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .register-customer .optional {
